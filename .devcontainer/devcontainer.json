@@ -1,0 +1,24 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+	"name": "SAP Edge Integration Cell Accelerator for Azure (Terraform)",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+	"features": {
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/terraform:1": {
+			"version": "latest"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.vscode-github-actions",
+                "HashiCorp.terraform",
+				"ms-vscode.azurecli"
+			]
+		}
+	},
+    "remoteUser": "vscode",
+	"hostRequirements": {
+		"memory": "4gb"
+	}
+}
