@@ -11,3 +11,8 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+  - package-ecosystem: 'terraform'
+    directory: '/'
+    schedule:
+      interval: "weekly"
+      day: "monday"
