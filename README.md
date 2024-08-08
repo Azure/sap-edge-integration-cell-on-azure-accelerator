@@ -25,11 +25,11 @@ Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Clou
 
 ### Accelerators
 
-|solution type|Description|
+|Solution Type|Description|
 |---|---|
 |[quickstart > aks](quickstart/aks/README.md)|Provides a non-production quickstart sample using AKS|
 |quickstart > hci (coming soon)|Provides a non-production quickstart sample using Azure Stack HCI|
-|production-ready|Provides a production ready (e.g. HA-Cluster) setup|
+|production-ready (coming soon)|Provides a production ready (e.g. HA-Cluster) setup|
 
 #### Setup
 
