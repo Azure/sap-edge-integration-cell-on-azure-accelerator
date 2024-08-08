@@ -23,13 +23,13 @@ Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Clou
 
 [![Teaser for YouTube video for SAP EIC install](assets/eic-install-video.png)](https://www.youtube.com/watch?v=PHPPnma7Y1A)
 
-### Folder structure
+### Accelerators
 
-|Folder|Description|
+|solution type|Description|
 |---|---|
-|[quickstart > aks](quickstart/aks/README.md)|Provides a non-production quickstart sample|
-|quickstart > hci (coming soon)|Provides a non-production quickstart sample|
-|production-ready (coming soon)|Provides a production ready (e.g. HA-Cluster) setup|
+|[quickstart > aks](quickstart/aks/README.md)|Provides a non-production quickstart sample using AKS|
+|quickstart > hci (coming soon)|Provides a non-production quickstart sample using Azure Stack HCI|
+|production-ready|Provides a production ready (e.g. HA-Cluster) setup|
 
 #### Setup
 
