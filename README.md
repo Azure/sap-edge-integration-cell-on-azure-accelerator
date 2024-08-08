@@ -31,15 +31,6 @@ Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Clou
 |quickstart > hci (coming soon)|Provides a non-production quickstart sample using Azure Stack HCI|
 |production-ready (coming soon)|Provides a production ready (e.g. HA-Cluster) setup|
 
-#### Setup
-
-You need to set the following Environment Variables:
-
-|Name|Description|
-|---|---|
-|BTP_USERNAME|The Username to access SAP BTP|
-|BTP_PASSWORD|The Password to access SAP BTP|
-
 ## Further Reading
 
 [Please see SAP Documentation for latest updates](https://help.sap.com/docs/integration-suite/sap-integration-suite/prepare-your-kubernetes-cluster)
