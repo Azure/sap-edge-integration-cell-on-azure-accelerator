@@ -2,7 +2,7 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=773743527)
 
-This repos serves as an accelerator for SAP Edge Integration Cell (EIC) on Azure Kubernetes Service (AKS). It provides a set of terraform scripts and templates to automate the deployment of the required infrastructure and software components.
+This repos serves as an accelerator for [SAP Edge Integration Cell](https://help.sap.com/docs/integration-suite/sap-integration-suite/setting-up-and-managing-edge-integration-cell) (EIC) on [Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/what-is-aks) (AKS). It provides a set of terraform scripts and templates to automate the deployment of the required infrastructure and software components.
 
 Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Cloud, to complete on-premises scenarios like SAP PI/PO to ECC communication within a factory. EIC requires outbound internet connectivity for heartbeats and updates though.
 
@@ -12,22 +12,24 @@ Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Clou
 
 ## Getting Started
 
-- [Overview and Installation Guide](https://blogs.sap.com/2023/11/16/next-gen-hybrid-integration-with-sap-integration-suite-edge-integration-cell-introduction-setup/)
+[3247839 - Prerequisites for installing SAP Integration Suite Edge Integration Cell](https://me.sap.com/notes/3247839)
+
+[Prepare for your deployment on AKS](https://help.sap.com/docs/integration-suite/sap-integration-suite/prepare-for-deployment-on-azure-kubernetes-service-aks)
+
+> [!IMPORTANT]
+> Always verify latest stable AKS version supported by SAP.
+
+[Overview and Installation Guide](https://blogs.sap.com/2023/11/16/next-gen-hybrid-integration-with-sap-integration-suite-edge-integration-cell-introduction-setup/)
+
+[![Teaser for YouTube video for SAP EIC install](assets/eic-install-video.png)](https://www.youtube.com/watch?v=PHPPnma7Y1A)
 
 ### Folder structure
 
 |Folder|Description|
 |---|---|
-|quickstart|Provides a non production quickstart sample|
-|production-ready|Provides a production ready (e.g. HA-Cluster) setup|
-
-### Prerequisites
-
-- [Please see SAP Documentation for latest updates](https://help.sap.com/docs/integration-suite/sap-integration-suite/prepare-your-kubernetes-cluster)
-- [Prepare for your deployment on AKS](https://help.sap.com/docs/integration-suite/sap-integration-suite/prepare-for-deployment-on-azure-kubernetes-service-aks)
-
-> [!NOTE]
-> Always verify latest stable AKS version supported by SAP.
+|[quickstart > aks](quickstart/aks/README.md)|Provides a non-production quickstart sample|
+|quickstart > hci (coming soon)|Provides a non-production quickstart sample|
+|production-ready (coming soon)|Provides a production ready (e.g. HA-Cluster) setup|
 
 #### Setup
 
@@ -39,6 +41,8 @@ You need to set the following Environment Variables:
 |BTP_PASSWORD|The Password to access SAP BTP|
 
 ## Further Reading
+
+[Please see SAP Documentation for latest updates](https://help.sap.com/docs/integration-suite/sap-integration-suite/prepare-your-kubernetes-cluster)
 
 ## Contributing
 
