@@ -32,6 +32,8 @@ Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Clou
 |quickstart > hci (coming soon)|Provides a non-production quickstart sample using Azure Stack HCI|
 |production-ready (coming soon)|Provides a production ready (e.g. HA-Cluster) setup|
 
+#Kudos to the [Aviators community](https://github.com/aviators-germany) and [Azure MVP Sebastian](https://www.linkedin.com/in/sebastianmeyerit/)😎 for the tremendous contributions.
+
 ## Further Reading
 
 [Please see SAP Documentation for latest updates](https://help.sap.com/docs/integration-suite/sap-integration-suite/prepare-your-kubernetes-cluster)
