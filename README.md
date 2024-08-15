@@ -27,6 +27,7 @@ Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Clou
 
 |Solution Type|Description|
 |---|---|
+|[qucikstart > cloud shell](quickstart/cloudshell/README.md)|Provides a non-production quickstart sample using Cloud Shell|
 |[quickstart > aks](quickstart/aks/README.md)|Provides a non-production quickstart sample using AKS via terraform|
 |[quickstart > sap](quickstart/sap/README.md)|Provides a non-production quickstart sample using SAP BTP terraform provider|
 |quickstart > hci (coming soon)|Provides a non-production quickstart sample using Azure Stack HCI|
