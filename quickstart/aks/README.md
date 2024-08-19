@@ -1,7 +1,7 @@
 # Edge Integration Cell quickstart on Azure Kubernetes Service (AKS)
 
 ## 1. Use local with installed Terraform
-If you already have an existing installation of Terraform, you can use the provided scripts to accelerate the provisioning of needed AKS resources for Edge Integration Cell. You can also use [SAP Scripts](sap/README.md) to enable the entitlements on BTP.
+If you already have an existing installation of Terraform, you can use the provided scripts to accelerate the provisioning of needed AKS resources for Edge Integration Cell. You can also use [SAP Scripts](../sap/README.md) to enable the entitlements on BTP.
 
 ### Commands
 Provided Scripts are using parameters. The following table shows all parameters and a brief description for usage.
