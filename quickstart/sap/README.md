@@ -12,3 +12,18 @@ You need to set the following Environment Variables:
 |---|---|
 |BTP_USERNAME|The Username to access SAP BTP|
 |BTP_PASSWORD|The Password to access SAP BTP|
+
+### 1. Initialize dependencies and providers
+```bash
+terraform init
+```
+
+### 2. Preview changes
+```bash
+terraform plan -var-file="aks.tfvars"
+```
+
+### 3. Commit changes to current state
+```bash
+terraform apply -var-file="aks.tfvars"
+```
