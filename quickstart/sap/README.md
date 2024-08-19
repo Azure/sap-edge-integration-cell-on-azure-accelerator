@@ -20,10 +20,10 @@ terraform init
 
 ### 2. Preview changes
 ```bash
-terraform plan -var-file="aks.tfvars"
+terraform plan
 ```
 
 ### 3. Commit changes to current state
 ```bash
-terraform apply -var-file="aks.tfvars"
+terraform apply
 ```
