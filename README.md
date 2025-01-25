@@ -10,6 +10,8 @@ Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Clou
 > Learn more about running EIC on validated hardware at the "edge" in your factory, plant, shop floor etc. with Azure Local (formerly Azure Stack HCI) [here](https://learn.microsoft.com/azure/azure-local/).
 > AKS gets deployed to HCI via [Azure Arc](https://learn.microsoft.com/azure/aks/hybrid/resource-manager-quickstart). Adjust the terraform scripts to use the [azurerm_arc_kubernetes_cluster](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/arc_kubernetes_cluster) provider accordingly.
 
+![SAP EIC on Azure](assets/SAP-EIC-AKS-overview.png)
+
 ## Getting Started
 
 [3247839 - Prerequisites for installing SAP Integration Suite Edge Integration Cell](https://me.sap.com/notes/3247839)
