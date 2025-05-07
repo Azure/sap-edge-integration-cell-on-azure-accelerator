@@ -6,9 +6,7 @@ This repos serves as an accelerator for [SAP Edge Integration Cell](https://help
 
 Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Cloud, to complete on-premises scenarios like SAP PI/PO to ECC communication within a factory. EIC requires outbound internet connectivity for heartbeats and updates though.
 
-> [!NOTE]
-> Learn more about running EIC on validated hardware at the "edge" in your factory, plant, shop floor etc. with Azure Local (formerly Azure Stack HCI) [here](https://learn.microsoft.com/azure/azure-local/).
-> AKS gets deployed to HCI via [Azure Arc](https://learn.microsoft.com/azure/aks/hybrid/resource-manager-quickstart). Adjust the terraform scripts to use the [azurerm_arc_kubernetes_cluster](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/arc_kubernetes_cluster) provider accordingly.
+Learn more from [this Microsoft Learn article](https://learn.microsoft.com/azure/sap/workloads/sap-edge-integration-cell-with-azure).
 
 ![SAP EIC on Azure](assets/SAP-EIC-AKS-overview.png)
 
@@ -30,9 +28,10 @@ Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Clou
 |Solution Type|Description|
 |---|---|
 |[quickstart > aks](quickstart/aks/README.md)|Provides a non-production quickstart sample using AKS|
+|quickstart > arc-enabled aks (coming soon)|Provides a non-production quickstart sample using Azure ARC enabled AKS|
 |[quickstart > sap](quickstart/sap/README.md)|Provides a non-production quickstart sample using SAP BTP terraform provider|
-|quickstart > azure-local (coming soon)|Provides a non-production quickstart sample using Azure Local (formerly Azure Stack HCI)|
-|production-ready (coming soon)|Provides a production ready (e.g. HA-Cluster) setup|
+|quickstart > azure-local (exploratory)|Provides a non-production quickstart sample using Azure Local (formerly Azure Stack HCI)|
+|production-ready (in development)|Provides a production ready (e.g. HA-Cluster) setup|
 
 ## Contributors
 
