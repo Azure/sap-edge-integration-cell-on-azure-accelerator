@@ -2,7 +2,6 @@
 
 > [!IMPORTANT]
 > Always verify latest stable AKS version supported by SAP.
-> Successfully Tested with Version=1.28.10
 
 ## Choose your preferred way to provision AKS
 
@@ -41,7 +40,7 @@ The following table shows all parameters and a brief description for usage.
 |resource_group_name|Name of the Resource Group where the AKS Cluster should be deployed to|
 |location|Location of Resources (e.g. westeurope, swedencentral)|
 
-Create and save the following lines to a local file named aks.tfvars to simply store parameter values for your environment. You can set your own values based on requirements.
+Create and save the following lines to a local file named terraform.tfvars to simply store parameter values for your environment. You can set your own values based on requirements.
 
 ```text
 resource_group_name = "eic-on-azure"
@@ -57,13 +56,13 @@ terraform init
 ### 2. Preview changes
 
 ```bash
-terraform plan -var-file="aks.tfvars"
+terraform plan
 ```
 
 ### 3. Commit changes to current state
 
 ```bash
-terraform apply -var-file="aks.tfvars"
+terraform apply
 ```
 
 ## Post AKS Provisioning
