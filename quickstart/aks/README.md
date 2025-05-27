@@ -16,6 +16,16 @@ git clone https://github.com/Azure/sap-edge-integration-cell-on-azure-accelerato
 cd sap-edge-integration-cell-on-azure-accelerator/quickstart/aks
 ```
 
+> [!TIP]
+> Set your subscription explicitly in the Azure CLI. This is important to avoid confusion with other subscriptions you might have access to.
+>
+> ```bash
+> az account set --subscription <your_subscription_id>
+> ```
+
+> [!TIP]
+> Skip ARM provider registration by terraform by setting variable $env:ARM_SKIP_PROVIDER_REGISTRATION="true";
+
 ### 1. Use local with installed Terraform
 
 If you already have an existing installation of Terraform, you can use the provided scripts to accelerate the provisioning of needed AKS resources for Edge Integration Cell. You can also use [SAP Scripts](../sap/README.md) to enable the entitlements on BTP.
