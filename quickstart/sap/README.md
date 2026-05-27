@@ -30,3 +30,11 @@ terraform plan
 ```bash
 terraform apply
 ```
+
+### 4. Verify the created resources in SAP BTP
+
+View the assigned entitlements for SAP Edge Integration Cell under the SAP Integration Suite service in the SAP BTP Cockpit.
+
+## Experimental
+
+SAP produced a first sample that provisions SAP Integration Suite in the SAP BTP trial environment. Find the code and instructions in their [SAP samples repository](https://github.com/SAP-samples/btp-terraform-samples/tree/main/released/usecases/trial_integration_suite). It serves as a reference to showcase the direction and the art of the possible.
