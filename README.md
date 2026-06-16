@@ -40,8 +40,8 @@ Learn more from [this Microsoft Learn article](https://learn.microsoft.com/azure
 
 ## Contributors
 
-- [Aviators community](https://github.com/aviators-germany)
-- [Sebastian (Azure MVP), QUIBIQ](https://www.linkedin.com/in/sebastianmeyerit/)
+- [Aviators community](https://aviators-germany.de/)
+- [Sebastian Meyer (Azure MVP)](https://github.com/qbq-hh-sebastian-meyer)
 
 #Kudos for the tremendous contributions😎
 
