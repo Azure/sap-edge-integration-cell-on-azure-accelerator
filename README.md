@@ -33,10 +33,8 @@ Learn more from [this Microsoft Learn article](https://learn.microsoft.com/azure
 |Solution Type|Description|
 |---|---|
 |[quickstart > aks](quickstart/aks/README.md)|Provides a non-production quickstart sample using AKS|
-|quickstart > arc-enabled aks (coming soon)|Provides a non-production quickstart sample using Azure ARC enabled AKS|
 |[quickstart > sap](quickstart/sap/README.md)|Provides a non-production quickstart sample using SAP BTP terraform provider|
-|quickstart > azure-local (exploratory)|Provides a non-production quickstart sample using Azure Local (formerly Azure Stack HCI)|
-|production-ready (in development)|Provides a production ready (e.g. HA-Cluster) setup|
+|production-ready > aks (in development) |Builds upon the well-architected framework blueprint setup|
 
 ## Contributors
 
