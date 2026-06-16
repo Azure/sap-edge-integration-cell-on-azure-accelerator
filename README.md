@@ -2,7 +2,7 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=773743527)
 
-This repos serves as an accelerator for [SAP Edge Integration Cell](https://help.sap.com/docs/integration-suite/sap-integration-suite/setting-up-and-managing-edge-integration-cell) (EIC) on [Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/what-is-aks) (AKS). It provides a set of terraform scripts and templates to automate the deployment of the required infrastructure and software components.
+This repos serves as an [accelerator](#recommended-accelerators) for [SAP Edge Integration Cell](https://help.sap.com/docs/integration-suite/sap-integration-suite/setting-up-and-managing-edge-integration-cell) (EIC) on [Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/what-is-aks) (AKS). It provides a set of infra-as-code templates to automate the deployment of the required infrastructure and software components.
 
 Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Cloud, to complete on-premises scenarios like SAP PI/PO to ECC communication within a factory. EIC requires outbound internet connectivity for heartbeats and updates though.
 
@@ -19,22 +19,24 @@ Learn more from [this Microsoft Learn article](https://learn.microsoft.com/azure
 > [!IMPORTANT]
 > Always verify latest stable AKS version supported by SAP.
 
-### SAP's installation Guide
-
-[Overview and Installation Guide](https://blogs.sap.com/2023/11/16/next-gen-hybrid-integration-with-sap-integration-suite-edge-integration-cell-introduction-setup/)
-
-[![Teaser for YouTube video for SAP EIC install](assets/eic-install-video.png)](https://www.youtube.com/watch?v=PHPPnma7Y1A)
-
-> [!TIP]
-> For SSL setup with your local SAP integration flow, provide your own certificate, key file, and DNS configuration. See the [end of above video (22:27m)](https://www.youtube.com/watch?v=PHPPnma7Y1A&t=1347s) for details.
-
-### Accelerators
+### Recommended Accelerators
 
 |Solution Type|Description|
 |---|---|
 |[quickstart > aks](quickstart/aks/README.md)|Provides a non-production quickstart sample using AKS|
 |[quickstart > sap](quickstart/sap/README.md)|Provides a non-production quickstart sample using SAP BTP terraform provider|
 |production-ready > aks (in development) |Builds upon the well-architected framework blueprint setup|
+
+### SAP's classic installation Guide
+
+[Overview and Installation Guide](https://blogs.sap.com/2023/11/16/next-gen-hybrid-integration-with-sap-integration-suite-edge-integration-cell-introduction-setup/)
+
+#### Video Guide for manual setup provided by SAP
+
+[![Teaser for YouTube video for SAP EIC install](assets/eic-install-video.png)](https://www.youtube.com/watch?v=PHPPnma7Y1A)
+
+> [!TIP]
+> For SSL setup with your local SAP integration flow, provide your own certificate, key file, and DNS configuration. See the [end of above video (22:27m)](https://www.youtube.com/watch?v=PHPPnma7Y1A&t=1347s) for details.
 
 ## Contributors
 
