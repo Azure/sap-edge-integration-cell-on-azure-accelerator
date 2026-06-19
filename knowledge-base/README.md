@@ -22,6 +22,7 @@
 |---------|-------------|----------|
 | [Architecture Overview](architecture.md) | SAP EIC components, Azure resource topology, networking model, and data flow | SRE, Platform Engineering |
 | [Prerequisites & Sizing](prerequisites.md) | Supported AKS versions, VM SKUs, SAP notes, resource requirements, and pre-deployment checklist | SRE, DevOps |
+| [ELM Configuration Hints](elm-configuration.md) | SAP Edge Lifecycle Management parameters, recommended values for POC vs production, storage class guidance | SRE, DevOps, Platform Engineering |
 
 ### Runbooks & Troubleshooting (`runbooks/`)
 

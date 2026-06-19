@@ -48,7 +48,7 @@ The following table shows all parameters and a brief description for usage.
 |Parameter|Description|
 |---|---|
 |resource_group_name|Name of the Resource Group where the AKS Cluster should be deployed to|
-|location|Location of Resources (e.g. westeurope, swedencentral)|
+|location|Location of Resources (default: `swedencentral`). Prefer less congested regions like `swedencentral` for better quota availability.|
 |kubernetes_version|Kubernetes version for the AKS cluster (default: `1.34`). Verify latest SAP-supported version before deploying.|
 |node_count|Number of nodes in the default node pool (default: `2`)|
 
@@ -56,7 +56,7 @@ Create and save the following lines to a local file named terraform.tfvars to si
 
 ```text
 resource_group_name = "eic-on-azure"
-location = "westeurope"
+location = "swedencentral"
 ```
 
 ### 1. Initialize dependencies and providers
@@ -85,6 +85,9 @@ The deployment created the required Kubernetes infrastructure for SAP Edge Integ
 
 **Continue with SAP's [manual installation guide](https://www.youtube.com/watch?v=PHPPnma7Y1A) because not all steps are automated yet.**
 
+> [!TIP]
+> See [ELM Configuration Hints](../../knowledge-base/elm-configuration.md) for recommended ELM wizard settings (storage classes, registry config, proxy, etc.) — covers both POC and production scenarios.
+
 Further down you will find supporting commands not mentioned in the video.
 
 ### Get kubeconfig file
@@ -110,10 +113,19 @@ Or find it on the Azure Portal under the `Kubernetes Resources` section in step 
 
 - Create a DNS entry for the IP address. You can use any DNS provider to create a DNS entry. Apply it as virtual host in the Edge Integration Cell configuration. The DNS entry should point to the IP address of the istio ingress gateway. For example, you can create a DNS entry like `eic.example.com` and point it to the IP address of the istio ingress gateway.
 
-- Take note of it to craft your integration flow endpoint URL. For example, if you created a DNS entry like `eic.example.com`, the integration flow endpoint URL with http trigger for your "smoke test" would be `https://eic.example.com/http/integration-smoke-test`.
+- Take note of it to craft your integration flow endpoint URL. For example, if you created a DNS entry like `eic.example.com`, the integration flow endpoint URL with http trigger for your "smoke test" would be `https://eic.example.com/http/smokeTest`.
 
 ### Smoke test
 
-- Create a new integration flow in the SAP Integration Suite with http trigger
-- Deploy it to your newly available Edge Integration Cell runtime
-- Use the service key of your process integration runtime to send a test message to the integration flow `GET https://eic.example.com/http/integration-smoke-test`
+A ready-made SAP CPI integration package is included for quick validation:
+
+1. **Import** the [Azure Quickstart for EIC](./Azure%20Quickstart%20for%20EIC.zip) package into SAP Integration Suite (Design → Import)
+2. **Deploy** the integration flow to your Edge Integration Cell runtime. See SAP's guide: [Deploy Integration Content to Edge Integration Cell](https://help.sap.com/docs/integration-suite/sap-integration-suite/deploying-integration-content-on-edge-integration-cell)
+3. **Test** using the service key of your Process Integration Runtime:
+
+```bash
+curl -k --user "<clientid>:<clientsecret>" https://<IP>.nip.io/http/smokeTest
+```
+
+> [!TIP]
+> Use `-k` to skip TLS verification for the POC nip.io setup. For production, configure a valid TLS certificate via cert-manager.

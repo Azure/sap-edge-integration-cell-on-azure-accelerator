@@ -3,7 +3,9 @@ variable "resource_group_name" {
 }
 
 variable "location" {
-  description = "The Azure Region in which all resources in this example should be provisioned"
+  description = "The Azure Region in which all resources should be provisioned. Prefer less congested regions (e.g. swedencentral) over high-demand ones (e.g. westeurope, eastus) for faster provisioning and better quota availability."
+  type        = string
+  default     = "swedencentral"
 }
 
 variable "kubernetes_version" {
