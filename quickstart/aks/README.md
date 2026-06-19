@@ -49,6 +49,8 @@ The following table shows all parameters and a brief description for usage.
 |---|---|
 |resource_group_name|Name of the Resource Group where the AKS Cluster should be deployed to|
 |location|Location of Resources (e.g. westeurope, swedencentral)|
+|kubernetes_version|Kubernetes version for the AKS cluster (default: `1.34`). Verify latest SAP-supported version before deploying.|
+|node_count|Number of nodes in the default node pool (default: `2`)|
 
 Create and save the following lines to a local file named terraform.tfvars to simply store parameter values for your environment. You can set your own values based on requirements.
 
