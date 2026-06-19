@@ -27,6 +27,10 @@ Learn more from [this Microsoft Learn article](https://learn.microsoft.com/azure
 |[quickstart > sap](quickstart/sap/README.md)|Provides a non-production quickstart sample using SAP BTP terraform provider|
 |production-ready > aks (in development) |Builds upon the well-architected framework blueprint setup|
 
+### 📚 Knowledge Base for Azure SRE Agent
+
+The [`knowledge-base/`](knowledge-base/README.md) directory provides agent-friendly operational knowledge for SAP EIC on Azure — architecture, prerequisites, troubleshooting, and runbooks. Add it as a **web page** source in [Azure SRE Agent](https://learn.microsoft.com/azure/sre-agent/) to enable AI-assisted diagnostics for your SAP EIC workloads. Community and agents extend this knowledge collaboratively.
+
 ### SAP's classic installation Guide
 
 [Overview and Installation Guide](https://blogs.sap.com/2023/11/16/next-gen-hybrid-integration-with-sap-integration-suite-edge-integration-cell-introduction-setup/)
