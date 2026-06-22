@@ -21,8 +21,8 @@
 
 ## Detection
 
-- **Alert:** `commerce-oomkilled` — see [`signals-and-alerts.md`](signals-and-alerts.md).
-- **KQL (OOMKilled):** the OOMKilled query in `signals-and-alerts.md`.
+- **Alert:** `commerce-oomkilled` — align with the monitoring guidance in [`operations.md`](operations.md#monitoring).
+- **KQL (OOMKilled):** use the **Key Log Queries (KQL)** section in [`operations.md`](operations.md#key-log-queries-kql) as the baseline and adapt for this alert.
 - **Live confirmation:**
 
 ```bash

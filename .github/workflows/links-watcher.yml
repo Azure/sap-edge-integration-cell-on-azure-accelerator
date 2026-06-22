@@ -2,7 +2,7 @@ name: Periodic Link Checker
 
 on:
   schedule:
-    - cron: "0 23 * * *"
+    - cron: "0 23 1 * *"
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,13 @@ jobs:
         id: lychee
         uses: lycheeverse/lychee-action@v2.8.0
         with:
-          args: --verbose --no-progress --max-concurrency 2 --exclude-link-local --exclude-loopback './**/*.md' --exclude portal.azure.com --exclude developers.sap.com --exclude shell.azure.com
+          args: >-
+            --verbose --no-progress --max-concurrency 2 --max-retries 4
+            --retry-wait-time 2s --timeout 30s --host-concurrency 1
+            --host-request-interval 1s --cache --max-cache-age 7d
+            --exclude-link-local --exclude-loopback './**/*.md'
+            --exclude portal.azure.com --exclude developers.sap.com
+            --exclude shell.azure.com
           output: ./lychee/out.md
           fail: true
         env:

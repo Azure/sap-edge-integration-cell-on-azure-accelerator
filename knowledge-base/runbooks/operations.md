@@ -105,7 +105,7 @@ kubectl -n kube-system logs deployment/cluster-autoscaler --tail=50
    ```bash
    az aks get-upgrades --resource-group <rg> --name <cluster> --output table
    ```
-3. **Review breaking changes**: Check the [AKS release notes](https://learn.microsoft.com/azure/aks/release-notes) for deprecations.
+3. **Review breaking changes**: Check the [AKS release notes](https://github.com/Azure/AKS/releases) for deprecations.
 4. **Backup**: Ensure EIC configuration is backed up in SAP BTP.
 
 ### Upgrade Procedure

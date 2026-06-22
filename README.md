@@ -33,7 +33,7 @@ The [`knowledge-base/`](knowledge-base/README.md) directory provides agent-frien
 
 ### SAP's classic installation Guide
 
-[Overview and Installation Guide](https://blogs.sap.com/2023/11/16/next-gen-hybrid-integration-with-sap-integration-suite-edge-integration-cell-introduction-setup/)
+[Overview and Installation Guide](https://community.sap.com/t5/integration-blog-posts/next-gen-hybrid-integration-with-sap-integration-suite-edge-integration/ba-p/13577780)
 
 #### Video Guide for manual setup provided by SAP
 
