@@ -83,3 +83,16 @@ The knowledge base **references** sample READMEs and IaC files via relative link
 ## Devcontainer
 
 `.devcontainer/devcontainer.json` provides Ubuntu + Azure CLI + Terraform (latest) and the HashiCorp Terraform / GitHub Actions / Azure CLI VS Code extensions. Use it (or Codespaces) for a ready-to-run environment. When Bicep blueprints land, the Azure CLI already present covers `az bicep`/`az deployment`.
+
+## EIC AKS/Kubernetes command guidance
+
+This guidance is for the current **PoC/quickstart** deployment shape in this repository. **Production-ready** environments may intentionally add stricter networking, ingress, certificate, and policy controls and should be evaluated against their own architecture/runbooks.
+
+When handling AKS/kubectl requests for quickstart/PoC in this repository, assume SAP EIC behavior and naming before proposing fixes:
+
+- **Use EIC namespace layout first.** Check `edge-icell`, `edge-icell-services`, `edge-icell-ela`, and `edgelm` before assuming a single `eic` namespace.
+- **Treat Istio ingress service as the external entrypoint proof.** In this setup, `istio-system/istio-ingressgateway` (`LoadBalancer`) with the public IP is the primary signal for external exposure; `kubectl get ingress` can legitimately be empty.
+- **Do not require Kubernetes Ingress objects as a completion gate** for quickstart EIC validations. Prefer checking ingressgateway service, pod readiness, and endpoints.
+- **Do not assume TLS secrets are in AKS.** Keystore/PFX can be configured only in SAP Integration Suite; lack of a TLS secret in cluster namespaces is not automatically a deployment failure.
+- **Validate internal service health with Kubernetes primitives:** pods ready, deployments/statefulsets available, service endpoints populated, PVCs bound, and no persistent crash loops.
+- **Interpret completed utility jobs carefully.** `Completed` status for one-off diagnostic hooks/jobs is expected and should not be flagged as unhealthy by default.
