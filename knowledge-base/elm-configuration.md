@@ -88,6 +88,9 @@ For POC, set the Target Registry Address to the same SAP CDN registry. For produ
 
 ## ELM Connector Settings
 
+> [!WARNING]
+> Re-running ELM deployment with the same runtime display name and edge node identity can trigger status conflicts (commonly while creating key store artifacts) when dangling processes from an earlier failed run are still present. Prefer unique runtime/node names for retries, and clear failed/partial deployment artifacts first.
+
 | Parameter | Description | Example |
 |-----------|-------------|---------|
 | Link to ELM | ELM service endpoint | `edge-lifecycle-manager-prod.cfapps.<region>.hana.ondemand.com` |

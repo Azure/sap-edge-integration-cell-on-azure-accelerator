@@ -88,6 +88,9 @@ The deployment created the required Kubernetes infrastructure for SAP Edge Integ
 > [!TIP]
 > See [ELM Configuration Hints](../../knowledge-base/elm-configuration.md) for recommended ELM wizard settings (storage classes, registry config, proxy, etc.) — covers both POC and production scenarios.
 
+> [!WARNING]
+> Re-running ELM setup with the same runtime display name and edge node identity can cause status conflicts (for example during key store creation) if dangling processes from a previous run still exist. Before retrying, clean up failed/partial artifacts and use fresh runtime/node names where possible.
+
 Further down you will find supporting commands not mentioned in the video.
 
 ### Get kubeconfig file
