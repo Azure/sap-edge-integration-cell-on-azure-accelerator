@@ -83,7 +83,8 @@ The deployment created the required Kubernetes infrastructure for SAP Edge Integ
 
 - Consider deploying SAP Integration Suite with Edge Integration Cell entitlement using the [SAP BTP Terraform Provider](../sap/README.md) to automate the deployment of the required service.
 
-**Continue with SAP's [manual installation guide](https://www.youtube.com/watch?v=PHPPnma7Y1A) because not all steps are automated yet.**
+**This accelerator intentionally stops after Azure provisioning and handover to SAP Integration Suite.**
+**For SAP-specific EIC installation steps in ELM and Integration Suite, follow SAP's always up-to-date guidance: [SAP Reference Architecture](https://architecture.learning.sap.com/docs/ref-arch/263f576c90/2) and [SAP installation video](https://www.youtube.com/watch?v=PHPPnma7Y1A).**
 
 > [!TIP]
 > See [ELM Configuration Hints](../../knowledge-base/elm-configuration.md) for recommended ELM wizard settings (storage classes, registry config, proxy, etc.) — covers both POC and production scenarios.

@@ -35,9 +35,14 @@ The [`knowledge-base/`](knowledge-base/README.md) directory provides agent-frien
 
 [Overview and Installation Guide](https://community.sap.com/t5/integration-blog-posts/next-gen-hybrid-integration-with-sap-integration-suite-edge-integration/ba-p/13577780)
 
+[SAP Reference Architecture](https://architecture.learning.sap.com/docs/ref-arch/263f576c90/2)
+
 #### Video Guide for manual setup provided by SAP
 
 [![Teaser for YouTube video for SAP EIC install](assets/eic-install-video.png)](https://www.youtube.com/watch?v=PHPPnma7Y1A)
+
+This accelerator focuses on Azure provisioning and then hands over to SAP Integration Suite.
+For SAP-specific EIC deployment steps in ELM and Integration Suite, always follow SAP's up-to-date documentation and video guidance.
 
 > [!TIP]
 > For SSL setup with your local SAP integration flow, provide your own certificate, key file, and DNS configuration. See the [end of above video (22:27m)](https://www.youtube.com/watch?v=PHPPnma7Y1A&t=1347s) for details.
