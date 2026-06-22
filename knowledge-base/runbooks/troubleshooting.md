@@ -177,6 +177,52 @@ kubectl get events --all-namespaces --sort-by='.lastTimestamp' | tail -50
    kubectl -n istio-system logs deployment/istio-ingressgateway
    ```
 
+### Endpoint Error: `artifactNotFound` / "No API endpoint is registered with this host and path"
+
+| Severity | **High** |
+|----------|---------|
+| Symptom | API call returns `{"artifactNotFound","message":"No API endpoint is registered with this host and path. Please ensure that the respective artifact is successfully deployed."}` |
+| Cause | Host/path does not match the deployed iFlow endpoint, artifact is not deployed to EIC runtime, request targets the wrong virtual host, or runtime routing state is stale after deployment changes |
+| Resolution | Steps below |
+
+1. Confirm ingress endpoint and host are aligned:
+   ```bash
+   kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+   ```
+2. Confirm the request host mapping is correct for your setup (custom DNS or `nip.io` in temporary PoC scenarios).
+3. In SAP Integration Suite, verify the target iFlow is **deployed to Edge Integration Cell runtime** (not only saved or deployed to cloud runtime).
+4. Verify the request path exactly matches the HTTP sender endpoint path configured in the iFlow.
+5. Validate EIC runtime namespaces are healthy (`edge-icell`, `edge-icell-services`, `edge-icell-ela`, `edgelm`):
+   ```bash
+   kubectl get pods -n edge-icell
+   kubectl get pods -n edge-icell-services
+   kubectl get pods -n edge-icell-ela
+   kubectl get pods -n edgelm
+   ```
+6. If all checks above are healthy but `artifactNotFound` persists, restart ingress and EIC service deployments to refresh route/runtime state:
+   ```bash
+   kubectl -n istio-system rollout restart deployment/istio-ingressgateway
+   kubectl -n edge-icell-services rollout restart deployment --all
+   ```
+7. Re-test the endpoint after pods are back to `Running` and `Ready`.
+
+### Outbound TLS Error: `java.net.ConnectException: PKIX path building failed`
+
+| Severity | **High** |
+|----------|---------|
+| Symptom | Runtime logs show `java.net.ConnectException: PKIX path building failed ... unable to find valid certification path to requested target` |
+| Cause | Remote server certificate chain is not trusted by the runtime trust store (missing CA/intermediate certs or corporate TLS interception CA not imported) |
+| Resolution | Steps below |
+
+1. Identify the failing target endpoint from iFlow logs/trace.
+2. Inspect the certificate chain presented by the target:
+   ```bash
+   echo | openssl s_client -connect <target-host>:443 -showcerts
+   ```
+3. Import the required root/intermediate CA certificates into the trust material used by the integration runtime (SAP Integration Suite/EIC trust setup).
+4. If your company uses TLS interception/proxy, import the corporate proxy CA as trusted.
+5. Re-test the iFlow call. For client-side PoC smoke tests from your workstation, `curl -k` only bypasses local client verification and does not fix runtime trust for outbound calls from EIC.
+
 ### Node Pool Scaling Failures
 
 | Severity | **Medium** |
@@ -229,6 +275,8 @@ kubectl get events --all-namespaces --sort-by='.lastTimestamp' | tail -50
 | EIC pods CrashLoopBackOff | Critical | `kubectl logs <pod> -n <ns> --previous` |
 | BTP heartbeat failure | Critical | Test outbound: `wget` from pod to `help.sap.com` |
 | 502/503 on iFlow endpoint | High | Check DNS, Istio config, pod readiness |
+| `artifactNotFound` for host/path | High | Verify iFlow deployment + host/path mapping; if still failing with healthy pods, restart ingress + `edge-icell-services` deployments |
+| `PKIX path building failed` outbound TLS | High | Inspect chain with `openssl s_client`, import missing CAs |
 | Node scaling failure | Medium | `kubectl describe node`, quota check |
 | Certificate expiry | High | `openssl s_client -connect <endpoint>:443` |
 

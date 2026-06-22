@@ -115,9 +115,10 @@ kubectl -n istio-system get service istio-ingressgateway
 
 Or find it on the Azure Portal under the `Kubernetes Resources` section in step `Services and Ingresses`. The IP address is listed under the `Cluster-IP` column.
 
-- Create a DNS entry for the IP address. You can use any DNS provider to create a DNS entry. Apply it as virtual host in the Edge Integration Cell configuration. The DNS entry should point to the IP address of the istio ingress gateway. For example, you can create a DNS entry like `eic.example.com` and point it to the IP address of the istio ingress gateway.
+- For host mapping, you can either use your own DNS entry or, for temporary PoC testing, use `nip.io` (`<ingress-ip>.nip.io`, for example `20.91.10.10.nip.io`).
+- For long-lived or production deployments, use a proper DNS entry with your own domain and certificate management.
 
-- Take note of it to craft your integration flow endpoint URL. For example, if you created a DNS entry like `eic.example.com`, the integration flow endpoint URL with http trigger for your "smoke test" would be `https://eic.example.com/http/smokeTest`.
+- Take note of it to craft your integration flow endpoint URL. Examples: `https://eic.example.com/http/smokeTest` or `https://<ingress-ip>.nip.io/http/smokeTest`.
 
 ### Smoke test
 
@@ -128,8 +129,8 @@ A ready-made SAP CPI integration package is included for quick validation:
 3. **Test** using the service key of your Process Integration Runtime:
 
 ```bash
-curl -k --user "<clientid>:<clientsecret>" https://<IP>.nip.io/http/smokeTest
+curl -k --user "<clientid>:<clientsecret>" https://<host>/http/smokeTest
 ```
 
 > [!TIP]
-> Use `-k` to skip TLS verification for the POC nip.io setup. For production, configure a valid TLS certificate via cert-manager.
+> Use `-k` only for temporary test scenarios where certificate validation is intentionally bypassed. For production, configure a valid TLS certificate via cert-manager.
