@@ -15,7 +15,13 @@ variable "kubernetes_version" {
 }
 
 variable "node_count" {
-  description = "The number of nodes for the default node pool."
+  description = "The number of nodes in the default node pool."
   type        = number
   default     = 2
+}
+
+variable "vm_size" {
+  description = "The VM size for nodes in the default node pool. Standard_D8ds_v5 meets SAP EIC minimum requirements (8 vCPU, 32 GB RAM)."
+  type        = string
+  default     = "Standard_D8ds_v5"
 }

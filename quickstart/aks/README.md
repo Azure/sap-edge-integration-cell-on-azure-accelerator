@@ -51,6 +51,7 @@ The following table shows all parameters and a brief description for usage.
 |location|Location of Resources (default: `swedencentral`). Prefer less congested regions like `swedencentral` for better quota availability.|
 |kubernetes_version|Kubernetes version for the AKS cluster (default: `1.34`). Verify latest SAP-supported version before deploying.|
 |node_count|Number of nodes in the default node pool (default: `2`)|
+|vm_size|VM size for default node pool nodes (default: `Standard_D8ds_v5`). Must meet SAP EIC minimum requirements (8 vCPU, 32 GB RAM).|
 
 Create and save the following lines to a local file named terraform.tfvars to simply store parameter values for your environment. You can set your own values based on requirements.
 
