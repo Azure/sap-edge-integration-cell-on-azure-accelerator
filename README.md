@@ -8,6 +8,9 @@ Scenarios range from hybrid setups like connecting a local ERP to SAP Sales Clou
 
 Learn more from [this Microsoft Learn article](https://learn.microsoft.com/azure/sap/workloads/sap-edge-integration-cell-with-azure).
 
+> [!IMPORTANT]
+> Follow the SAP learning course "[Accelerating Hybrid Integrations with SAP Integration Suite on Microsoft Azure](https://learning.sap.com/courses/accelerating-hybrid-integrations-with-sap-integration-suite-on-microsoft-azure)" for a comprehensive understanding of SAP Edge Integration Cell with Microsoft. Understand the architecture, deployment, best-practices, traditional operational aspects, and AI-Ops to effectively manage your SAP EIC on Azure environment.
+
 ![SAP EIC on Azure](assets/SAP-EIC-AKS-overview.png)
 
 ## Getting Started
@@ -56,7 +59,8 @@ For SAP-specific EIC deployment steps in ELM and Integration Suite, always follo
 
 ## Further Reading
 
-[Please see SAP Documentation for latest updates](https://help.sap.com/docs/integration-suite/sap-integration-suite/prepare-your-kubernetes-cluster)
+- [Please see SAP Documentation for latest updates](https://help.sap.com/docs/integration-suite/sap-integration-suite/prepare-your-kubernetes-cluster)
+- SAP Learning Course "[Accelerating Hybrid Integrations with SAP Integration Suite on Microsoft Azure](https://learning.sap.com/courses/accelerating-hybrid-integrations-with-sap-integration-suite-on-microsoft-azure)"
 
 ## Contributing
 
