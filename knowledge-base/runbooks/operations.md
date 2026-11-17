@@ -1,7 +1,7 @@
 # Operations & Runbooks — SAP Edge Integration Cell on Azure
 
 > **Audience**: SRE, Platform Engineering
-> **Last verified**: June 2026
+> **Last verified**: November 2026 (alerting reference and PostgreSQL TLS guidance; other procedures last verified June 2026)
 > **Scope**: Day-2 operations for SAP EIC running on AKS
 
 ---
@@ -143,6 +143,28 @@ kubectl get pods --all-namespaces --field-selector=status.phase!=Running
 
 ## Certificate Management
 
+### PostgreSQL TLS Certificates and Alert Coverage
+
+**Scope**: EIC connecting to **Azure Database for PostgreSQL Flexible Server**. First confirm the database service and the EIC version in use; self-managed PostgreSQL and other services can have different certificate ownership and monitoring.
+
+The [Flexible Server metrics reference](https://learn.microsoft.com/azure/azure-monitor/reference/supported-metrics/microsoft-dbforpostgresql-flexibleservers-metrics) does **not list a certificate-expiration metric**. Do not assume a native metric alert warns before PostgreSQL TLS certificates expire, or that SAP EIC alerting covers this dependency.
+
+| Certificate or signal | Ownership and SRE implication |
+|-----------------------|-------------------------------|
+| PostgreSQL server certificate and intermediate CAs | Microsoft manages rotation. According to the [PostgreSQL TLS guidance](https://learn.microsoft.com/azure/postgresql/security/security-tls), routine server and intermediate CA rotations are not announced in advance. Monitoring only the current server certificate's expiry cannot predict a future trust-chain change. |
+| Root CAs trusted by the EIC database client | Microsoft announces root CA changes in advance; operators must verify that the actual EIC database-client trust configuration trusts the required roots. Microsoft advises against pinning individual server certificates or trusting intermediate certificates as roots. Confirm the SAP-supported configuration for the deployed EIC version before changing it. |
+| TLS client certificates | Flexible Server does not support TLS client-certificate authentication (mTLS). Do not assume an expiring client certificate is the cause without first identifying the actual database service and connection configuration. |
+| `connections_failed` and `is_db_alive` | Available platform metrics can support connection-failure and availability alerts, but neither is an expiry warning or proof that EIC trusts the server certificate. Client-side TLS rejection need not be fully reflected in server-side metrics. |
+
+Recommended **local monitoring design**, not a built-in SAP or Azure alert guarantee:
+
+1. Inventory the database FQDN, service type, EIC version, database-client truststore or CA bundle actually in use, certificate validity dates, and renewal owner. Do not assume the relevant trust material is an AKS TLS secret or the ingress certificate.
+2. Monitor expiry of the certificates in that actual trust configuration. Example warning windows are 30, 14, and 7 days before expiry; these are local policy choices, not vendor thresholds. Assign an owner to review Microsoft's TLS/root CA change guidance as well: expiry alerts alone do not cover rotations.
+3. Use a scheduled check that establishes a **new**, read-only database connection from the EIC network path, with hostname and chain verification and equivalent database-client trust settings. A generic probe with a different truststore does not prove EIC connectivity; an existing pooled connection can mask problems with new handshakes. Alert separately on failed checks and missing check results.
+4. Correlate probe failures with EIC database-client TLS errors and PostgreSQL metrics. Route confirmed failures affecting EIC database access as **High**, escalating to **Critical** for a confirmed runtime outage under the local incident policy. Never disable TLS or certificate validation to make a check pass.
+
+**SAP evidence limitation**: A SAP Notes search for EIC PostgreSQL certificate-expiry failures returned no matching notes during this update. No SAP-specific certificate-expiry alert or truststore-update procedure was verified; consult the [SAP EIC alerting reference](#sap-eic-alerting-reference) and confirm version applicability with SAP before making runtime changes.
+
 ### TLS Certificate Rotation for Istio Ingress
 
 When the TLS certificate for your integration flow endpoint needs renewal:
@@ -177,6 +199,17 @@ az aks rotate-certs --resource-group <rg> --name <cluster>
 ---
 
 ## Monitoring
+
+### SAP EIC Alerting Reference
+
+Consult [Alerting (SAP Help Portal)](https://help.sap.com/docs/integration-suite/isuite-edge-integration-cell/alerting) when planning or reviewing alert coverage for SAP Edge Integration Cell. Use the current SAP documentation to verify applicable prerequisites, configuration instructions, and alert behavior for your deployed EIC version.
+
+| SRE task | Guidance |
+|----------|----------|
+| Review alert coverage | Consult SAP's EIC alerting page alongside AKS infrastructure monitoring; do not treat infrastructure metrics alone as proof of EIC runtime health. |
+| Record incident evidence | Capture the alert source, original severity, message, timestamps, affected EIC instance, and any supplied component or namespace identifiers before correlating with AKS observations. |
+| Interpret local thresholds | The Azure Monitor thresholds below are repository recommendations, not SAP-defined EIC alert thresholds or severity mappings. |
+| Use this reference with an SRE agent | Retrieve the SAP page before citing its details. If its content is unavailable, state that limitation rather than infer alert definitions or remediation steps from this link. |
 
 ### Recommended Azure Monitor Metrics
 
@@ -254,4 +287,7 @@ For a complete cluster re-deployment:
 - [AKS Operations Best Practices (Microsoft Learn)](https://learn.microsoft.com/azure/aks/best-practices)
 - [AKS Monitoring with Container Insights](https://learn.microsoft.com/azure/azure-monitor/containers/container-insights-overview)
 - [SAP EIC Edge Lifecycle Management](https://help.sap.com/docs/integration-suite/sap-integration-suite/setting-up-and-managing-edge-integration-cell)
+- [SAP EIC Alerting](https://help.sap.com/docs/integration-suite/isuite-edge-integration-cell/alerting)
+- [Azure PostgreSQL Flexible Server TLS and Certificate Rotation](https://learn.microsoft.com/azure/postgresql/security/security-tls)
+- [Azure PostgreSQL Flexible Server Supported Metrics](https://learn.microsoft.com/azure/azure-monitor/reference/supported-metrics/microsoft-dbforpostgresql-flexibleservers-metrics)
 - [Velero for AKS Backup](https://learn.microsoft.com/azure/aks/hybrid/backup-workload-cluster)

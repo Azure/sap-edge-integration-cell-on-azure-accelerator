@@ -29,7 +29,7 @@
 | Runbook | Description | Audience |
 |---------|-------------|----------|
 | [Troubleshooting Guide](runbooks/troubleshooting.md) | Common failure modes, diagnostic commands, and resolution steps | SRE, Support |
-| [Operations & Day-2](runbooks/operations.md) | Monitoring, scaling, certificate rotation, upgrades, and disaster recovery | SRE, Platform Engineering |
+| [Operations & Day-2](runbooks/operations.md) | SAP EIC alerting reference, PostgreSQL TLS alert coverage, monitoring, scaling, certificate rotation, upgrades, and disaster recovery | SRE, Platform Engineering |
 | [Commerce Memory Leak](runbooks/commerce-memory-leak.md) | OOMKilled restart loop caused by unbounded search cache — diagnosis, remediation, and verification | SRE, Support |
 
 ---
@@ -54,6 +54,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add or update articles.
 | Resource | URL |
 |----------|-----|
 | SAP EIC Documentation | https://help.sap.com/docs/integration-suite/sap-integration-suite/setting-up-and-managing-edge-integration-cell |
+| SAP EIC Alerting | https://help.sap.com/docs/integration-suite/isuite-edge-integration-cell/alerting |
 | SAP EIC Prerequisites (SAP Note 3247839) | https://me.sap.com/notes/3247839 |
 | AKS Preparation Guide | https://help.sap.com/docs/integration-suite/sap-integration-suite/prepare-for-deployment-on-azure-kubernetes-service-aks |
 | AKS Baseline Reference Architecture | https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks/baseline-aks |
