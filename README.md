@@ -28,7 +28,8 @@ Learn more from [this Microsoft Learn article](https://learn.microsoft.com/azure
 |---|---|
 |[quickstart > aks](quickstart/aks/README.md)|Provides a non-production quickstart sample using AKS|
 |[quickstart > sap](quickstart/sap/README.md)|Provides a non-production quickstart sample using SAP BTP terraform provider|
-|production-ready > aks (in development) |Builds upon the well-architected framework blueprint setup|
+|[production-ready > aks](production-ready/aks/README.md) |AKS baseline architecture guidance and production-ready scaffold|
+|[production-ready > azure-paas](production-ready/azure-paas/README.md)|Adds production PostgreSQL and Redis guidance after the AKS baseline|
 
 ### 📚 Knowledge Base for Azure SRE Agent
 

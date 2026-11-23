@@ -172,6 +172,7 @@ Record these decisions per environment (dev, test, prod):
 
 ## Related References
 
+- [AKS baseline references](../aks/README.md#aks-baseline-references)
 - [Knowledge Base: Architecture Overview](../../knowledge-base/architecture.md)
 - [Knowledge Base: Prerequisites and sizing](../../knowledge-base/prerequisites.md)
 - [Knowledge Base: Operations runbook](../../knowledge-base/runbooks/operations.md)

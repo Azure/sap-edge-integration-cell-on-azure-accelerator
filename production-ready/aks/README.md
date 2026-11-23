@@ -2,9 +2,6 @@
 
 This page helps you quickly find the right production-ready guidance for SAP Edge Integration Cell (EIC) on AKS.
 
-> [!IMPORTANT]
-> This folder is currently in development. Use it as architecture and planning guidance, and use quickstart modules when you need a working deployment today.
-
 ## Find Information by Goal
 
 Use this section to jump directly to what you need.
@@ -14,6 +11,7 @@ Use this section to jump directly to what you need.
 | Provision a working AKS environment quickly | [Quickstart AKS deployment](../../quickstart/aks/README.md) |
 | Understand production architecture expectations | [Production Architecture Direction](#production-architecture-direction) |
 | Apply Azure Well-Architected AKS patterns | [AKS baseline references](#aks-baseline-references) |
+| Add production PostgreSQL and Redis after the AKS baseline | [Azure PaaS production delta](../azure-paas/README.md) |
 | Check SAP EIC prerequisites and sizing | [Knowledge Base: Prerequisites](../../knowledge-base/prerequisites.md) |
 | Plan operations, monitoring, and troubleshooting | [Knowledge Base: Runbooks](../../knowledge-base/README.md#runbooks--troubleshooting-runbooks) |
 | Continue with SAP-side setup after AKS | [SAP documentation and ELM handover](#sap-documentation-and-elm-handover) |
@@ -52,9 +50,10 @@ If you are designing a production rollout, this sequence is recommended:
 1. [Knowledge Base: Architecture Overview](../../knowledge-base/architecture.md)
 2. [Knowledge Base: Prerequisites and sizing](../../knowledge-base/prerequisites.md)
 3. [AKS baseline references](#aks-baseline-references)
-4. [Quickstart AKS sample for practical deployment flow](../../quickstart/aks/README.md)
-5. [Knowledge Base: Operations and Day-2 runbook](../../knowledge-base/runbooks/operations.md)
-6. [Knowledge Base: Troubleshooting runbook](../../knowledge-base/runbooks/troubleshooting.md)
+4. [Azure PaaS production delta (PostgreSQL and Redis)](../azure-paas/README.md)
+5. [Quickstart AKS sample for practical deployment flow](../../quickstart/aks/README.md)
+6. [Knowledge Base: Operations and Day-2 runbook](../../knowledge-base/runbooks/operations.md)
+7. [Knowledge Base: Troubleshooting runbook](../../knowledge-base/runbooks/troubleshooting.md)
 
 ## Topic Map
 
